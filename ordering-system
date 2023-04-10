@@ -1,0 +1,875 @@
+# This is to certify that this project is my own work, based on my personal
+# efforts in studying and applying the concepts learned. I have constructed
+# the functions and their respective algorithms and corresponding code by
+# myself. The program was run, tested, and debugged by my own efforts. I
+# further certify that I have not copied in part or whole or otherwise
+# plagiarized the work of other students and/or persons.
+# Krystelle Anne C. Macaraeg, DLSU ID# 12267678
+
+# Description: This Python program is a restaurant ordering system that allows
+# the user to select a maximum of 3 meals sets for a group. The program presents
+# a menu of options for the user to choose from: main dish, side dish and drink.
+# After ordering, the program displays a summary of the order and asks the user
+# for confirmation before proceeding with the next order. At the end of the order
+# process, the program displays  the total amount due and how much each person in
+# the group needs to pay. The user can also exclude an item from the total and
+# get the final order summary.
+# Programmed by: Krystelle Anne C. Macaraeg T-STEM 11-IHL-A
+# Last modified: April 9, 2023
+# Version: 1.0.4
+# Acknowledgements: https://automatetheboringstuff.com/, https://docs.python.org/3/
+
+# Welcome message and option selection
+print("Welcome to the ordering system!")
+
+option = 0
+while option != 1 and option != 2:
+    option = int(input("Please select an option: 1. Order 2. Exit\n"))
+    if option != 1 and option != 2:
+        print("Invalid input. Please choose 1 or 2.")
+        continue
+# Ordering process
+if option == 1:
+    # Group Ordering
+    num_people = 0
+    while num_people <= 0 or num_people >= 4:
+        num_people = int(input("How many people are in your group? (maximum of 3)\n"))
+        if num_people <= 0 or num_people >= 4:
+            print("Sorry, we can only accommodate up to 3 people.")
+        # 1 Order
+        if num_people == 1:
+            order_1 = True
+            while order_1:
+                print("Order 1")
+                print("Main Menu")
+                print("1. Chicken - P90.00")
+                print("2. Pork - Php 105.00")
+                print("3. Fish - Php 120.00")
+                print("4. Beef - Php 135.00")
+                main_1 = 0
+                while main_1 < 1 or main_1 > 4:
+                    main_1 = int(input("Please select a main dish (1-4): "))
+                    if main_1 < 1 or main_1 > 4:
+                        print("Invalid input. Please check the Main Menu again.")
+                        continue
+                if main_1 == 1:
+                    main_1_name = "Chicken"
+                    main_1_price = 90
+                elif main_1 == 2:
+                    main_1_name = "Pork"
+                    main_1_price = 105
+                elif main_1 == 3:
+                    main_1_name = "Fish"
+                    main_1_price = 120
+                elif main_1 == 4:
+                    main_1_name = "Beef"
+                    main_1_price = 135
+
+                print("Side Menu:")
+                print("1. Steamed Rice - Php 20.00")
+                print("2. Shredded Corn - Php 35.00")
+                print("3. Mashed Potatoes - Php 50.00")
+                print("4. Steam Vegetables - Php 65.00")
+                side_1 = 0
+                while side_1 < 1 or side_1 > 4:
+                    side_1 = int(input("Please select a side dish (1-4): "))
+                    if side_1 < 1 or side_1 > 4:
+                        print("Invalid input. Please check the Side Menu again.")
+                        continue
+                if side_1 == 1:
+                    side_1_name = "Steamed Rice"
+                    side_1_price = 20
+                elif side_1 == 2:
+                    side_1_name = "Shredded Corn"
+                    side_1_price = 35
+                elif side_1 == 3:
+                    side_1_name = "Mashed Potatoes"
+                    side_1_price = 50
+                elif side_1 == 4:
+                    side_1_name = "Steamed Vegetables"
+                    side_1_price = 65
+
+                print("Drink Menu:")
+                print("1. Mineral Water - Php 25.00")
+                print("2. Iced Tea - Php 35.00")
+                print("3. Soda - Php 45.00")
+                print("4. Fruit Juice - Php 55.00")
+                drink_1 = 0
+                while drink_1 < 1 or drink_1 > 4:
+                    drink_1 = int(input("Please select a drink (1-4): "))
+                    if drink_1 < 1 or drink_1 > 4:
+                        print("Invalid input. Please check the Drink Menu again.")
+                        continue
+                if drink_1 == 1:
+                    drink_1_name = "Mineral Water"
+                    drink_1_price = 25
+                elif drink_1 == 2:
+                    drink_1_name = "Iced Tea"
+                    drink_1_price = 35
+                elif drink_1 == 3:
+                    drink_1_name = "Soda"
+                    drink_1_price = 45
+                elif drink_1 == 4:
+                    drink_1_name = "Fruit Juice"
+                    drink_1_price = 55
+
+                print("Order 1: ")
+                print(f"Main Dish: {main_1_name} - P{main_1_price:.2f}")
+                print(f"Side Dish: {side_1_name} - P{side_1_price:.2f}")
+                print(f"Drink: {drink_1_name} - P{drink_1_price:.2f}")
+
+                is_correct = ""
+                while is_correct != "y" and is_correct != "n":
+                    is_correct = input("Is this meal set order correct? (y/n)\n")
+                    if is_correct != "y" and is_correct != "n":
+                        print("Invalid input. Please enter y or n.")
+                        continue
+                if is_correct == "n":
+                    print("Ordering process restarting...")
+                    order_1 = True
+                else:
+                    order_1 = False
+        # 2 Orders
+        elif num_people == 2:
+            order_1 = True
+            while order_1:
+                print("Order 1")
+                print("Main Menu")
+                print("1. Chicken - P90.00")
+                print("2. Pork - Php 105.00")
+                print("3. Fish - Php 120.00")
+                print("4. Beef - Php 135.00")
+                main_1 = 0
+                while main_1 < 1 or main_1 > 4:
+                    main_1 = int(input("Please select a main dish (1-4): "))
+                    if main_1 < 1 or main_1 > 4:
+                        print("Invalid input. Please check the Main Menu again.")
+                        continue
+                if main_1 == 1:
+                    main_1_name = "Chicken"
+                    main_1_price = 90
+                elif main_1 == 2:
+                    main_1_name = "Pork"
+                    main_1_price = 105
+                elif main_1 == 3:
+                    main_1_name = "Fish"
+                    main_1_price = 120
+                elif main_1 == 4:
+                    main_1_name = "Beef"
+                    main_1_price = 135
+
+                print("Side Menu:")
+                print("1. Steamed Rice - Php 20.00")
+                print("2. Shredded Corn - Php 35.00")
+                print("3. Mashed Potatoes - Php 50.00")
+                print("4. Steam Vegetables - Php 65.00")
+                side_1 = 0
+                while side_1 < 1 or side_1 > 4:
+                    side_1 = int(input("Please select a side dish (1-4): "))
+                    if side_1 < 1 or side_1 > 4:
+                        print("Invalid input. Please check the Side Menu again.")
+                        continue
+                if side_1 == 1:
+                    side_1_name = "Steamed Rice"
+                    side_1_price = 20
+                elif side_1 == 2:
+                    side_1_name = "Shredded Corn"
+                    side_1_price = 35
+                elif side_1 == 3:
+                    side_1_name = "Mashed Potatoes"
+                    side_1_price = 50
+                elif side_1 == 4:
+                    side_1_name = "Steamed Vegetables"
+                    side_1_price = 65
+
+                print("Drink Menu:")
+                print("1. Mineral Water - Php 25.00")
+                print("2. Iced Tea - Php 35.00")
+                print("3. Soda - Php 45.00")
+                print("4. Fruit Juice - Php 55.00")
+                drink_1 = 0
+                while drink_1 < 1 or drink_1 > 4:
+                    drink_1 = int(input("Please select a drink (1-4): "))
+                    if drink_1 < 1 or drink_1 > 4:
+                        print("Invalid input. Please check the Drink Menu again.")
+                        continue
+                if drink_1 == 1:
+                    drink_1_name = "Mineral Water"
+                    drink_1_price = 25
+                elif drink_1 == 2:
+                    drink_1_name = "Iced Tea"
+                    drink_1_price = 35
+                elif drink_1 == 3:
+                    drink_1_name = "Soda"
+                    drink_1_price = 45
+                elif drink_1 == 4:
+                    drink_1_name = "Fruit Juice"
+                    drink_1_price = 55
+
+                print("Order 1: ")
+                print(f"Main Dish: {main_1_name} - P{main_1_price:.2f}")
+                print(f"Side Dish: {side_1_name} - P{side_1_price:.2f}")
+                print(f"Drink: {drink_1_name} - P{drink_1_price:.2f}")
+
+                is_correct = ""
+                while is_correct != "y" and is_correct != "n":
+                    is_correct = input("Is this meal set order correct? (y/n)\n")
+                    if is_correct != "y" and is_correct != "n":
+                        print("Invalid input. Please enter y or n.")
+                        continue
+                if is_correct == "n":
+                    print("Ordering process restarting...")
+                    order_1 = True
+                    continue
+                else:
+                    order_1 = False
+
+                proceed = ""
+                while proceed != "y" and proceed != "n":
+                    proceed = input("Proceed with the next order? (y/n)\n")
+                    if proceed != "y" and proceed != "n":
+                        print("Invalid input. Please enter y or n.")
+                        continue
+                if proceed == "n":
+                    print("Ordering process restarting...")
+                    order_1 = True
+                else:
+                    order_1 = False
+
+            order_2 = True
+            while order_2:
+                print("Order 2")
+                print("Main Menu")
+                print("1. Chicken - P90.00")
+                print("2. Pork - Php 105.00")
+                print("3. Fish - Php 120.00")
+                print("4. Beef - Php 135.00")
+                main_2 = 0
+                while main_2 < 1 or main_2 > 4:
+                    main_2 = int(input("Please select a main dish (1-4): "))
+                    if main_2 < 1 or main_2 > 4:
+                        print("Invalid input. Please check the Main Menu again.")
+                        continue
+                if main_2 == 1:
+                    main_2_name = "Chicken"
+                    main_2_price = 90
+                elif main_2 == 2:
+                    main_2_name = "Pork"
+                    main_2_price = 105
+                elif main_2 == 3:
+                    main_2_name = "Fish"
+                    main_2_price = 120
+                elif main_2 == 4:
+                    main_2_name = "Beef"
+                    main_2_price = 135
+
+                print("Side Menu:")
+                print("1. Steamed Rice - Php 20.00")
+                print("2. Shredded Corn - Php 35.00")
+                print("3. Mashed Potatoes - Php 50.00")
+                print("4. Steam Vegetables - Php 65.00")
+                side_2 = 0
+                while side_2 < 1 or side_2 > 4:
+                    side_2 = int(input("Please select a side dish (1-4): "))
+                    if side_2 < 1 or side_2 > 4:
+                        print("Invalid input. Please check the Side Menu again.")
+                        continue
+                if side_2 == 1:
+                    side_2_name = "Steamed Rice"
+                    side_2_price = 20
+                elif side_2 == 2:
+                    side_2_name = "Shredded Corn"
+                    side_2_price = 35
+                elif side_2 == 3:
+                    side_2_name = "Mashed Potatoes"
+                    side_2_price = 50
+                elif side_2 == 4:
+                    side_2_name = "Steamed Vegetables"
+                    side_2_price = 65
+
+                print("Drink Menu:")
+                print("1. Mineral Water - Php 25.00")
+                print("2. Iced Tea - Php 35.00")
+                print("3. Soda - Php 45.00")
+                print("4. Fruit Juice - Php 55.00")
+                drink_2 = 0
+                while drink_2 < 1 or drink_2 > 4:
+                    drink_2 = int(input("Please select a drink (1-4): "))
+                    if drink_2 < 1 or drink_2 > 4:
+                        print("Invalid input. Please check the Drink Menu again.")
+                        continue
+                if drink_2 == 1:
+                    drink_2_name = "Mineral Water"
+                    drink_2_price = 25
+                elif drink_2 == 2:
+                    drink_2_name = "Iced Tea"
+                    drink_2_price = 35
+                elif drink_2 == 3:
+                    drink_2_name = "Soda"
+                    drink_2_price = 45
+                elif drink_2 == 4:
+                    drink_2_name = "Fruit Juice"
+                    drink_2_price = 55
+
+                print("Order 2: ")
+                print(f"Main Dish: {main_2_name} - P{main_2_price:.2f}")
+                print(f"Side Dish: {side_2_name} - P{side_2_price:.2f}")
+                print(f"Drink: {drink_2_name} - P{drink_2_price:.2f}")
+
+                is_correct = ""
+                while is_correct != "y" and is_correct != "n":
+                    is_correct = input("Is this meal set order correct? (y/n)\n")
+                    if is_correct != "y" and is_correct != "n":
+                        print("Invalid input. Please enter y or n.")
+                        continue
+                if is_correct == "n":
+                    print("Ordering process restarting...")
+                    order_2 = True
+                else:
+                    order_2 = False
+        # 3 Orders
+        elif num_people == 3:
+            order_1 = True
+            while order_1:
+                print("Order 1")
+                print("Main Menu")
+                print("1. Chicken - P90.00")
+                print("2. Pork - Php 105.00")
+                print("3. Fish - Php 120.00")
+                print("4. Beef - Php 135.00")
+                main_1 = 0
+                while main_1 < 1 or main_1 > 4:
+                    main_1 = int(input("Please select a main dish (1-4): "))
+                    if main_1 < 1 or main_1 > 4:
+                        print("Invalid input. Please check the Main Menu again.")
+                        continue
+                if main_1 == 1:
+                    main_1_name = "Chicken"
+                    main_1_price = 90
+                elif main_1 == 2:
+                    main_1_name = "Pork"
+                    main_1_price = 105
+                elif main_1 == 3:
+                    main_1_name = "Fish"
+                    main_1_price = 120
+                elif main_1 == 4:
+                    main_1_name = "Beef"
+                    main_1_price = 135
+
+                print("Side Menu:")
+                print("1. Steamed Rice - Php 20.00")
+                print("2. Shredded Corn - Php 35.00")
+                print("3. Mashed Potatoes - Php 50.00")
+                print("4. Steam Vegetables - Php 65.00")
+                side_1 = 0
+                while side_1 < 1 or side_1 > 4:
+                    side_1 = int(input("Please select a side dish (1-4): "))
+                    if side_1 < 1 or side_1 > 4:
+                        print("Invalid input. Please check the Side Menu again.")
+                        continue
+                if side_1 == 1:
+                    side_1_name = "Steamed Rice"
+                    side_1_price = 20
+                elif side_1 == 2:
+                    side_1_name = "Shredded Corn"
+                    side_1_price = 35
+                elif side_1 == 3:
+                    side_1_name = "Mashed Potatoes"
+                    side_1_price = 50
+                elif side_1 == 4:
+                    side_1_name = "Steamed Vegetables"
+                    side_1_price = 65
+
+                print("Drink Menu:")
+                print("1. Mineral Water - Php 25.00")
+                print("2. Iced Tea - Php 35.00")
+                print("3. Soda - Php 45.00")
+                print("4. Fruit Juice - Php 55.00")
+                drink_1 = 0
+                while drink_1 < 1 or drink_1 > 4:
+                    drink_1 = int(input("Please select a drink (1-4): "))
+                    if drink_1 < 1 or drink_1 > 4:
+                        print("Invalid input. Please check the Drink Menu again.")
+                        continue
+                if drink_1 == 1:
+                    drink_1_name = "Mineral Water"
+                    drink_1_price = 25
+                elif drink_1 == 2:
+                    drink_1_name = "Iced Tea"
+                    drink_1_price = 35
+                elif drink_1 == 3:
+                    drink_1_name = "Soda"
+                    drink_1_price = 45
+                elif drink_1 == 4:
+                    drink_1_name = "Fruit Juice"
+                    drink_1_price = 55
+
+                print("Order 1: ")
+                print(f"Main Dish: {main_1_name} - P{main_1_price:.2f}")
+                print(f"Side Dish: {side_1_name} - P{side_1_price:.2f}")
+                print(f"Drink: {drink_1_name} - P{drink_1_price:.2f}")
+
+                is_correct = ""
+                while is_correct != "y" and is_correct != "n":
+                    is_correct = input("Is this meal set order correct? (y/n)\n")
+                    if is_correct != "y" and is_correct != "n":
+                        print("Invalid input. Please enter y or n.")
+                        continue
+                if is_correct == "n":
+                    print("Ordering process restarting...")
+                    order_1 = True
+                    continue
+                else:
+                    order_1 = False
+
+                proceed = ""
+                while proceed != "y" and proceed != "n":
+                    proceed = input("Proceed with the next order? (y/n)\n")
+                    if proceed != "y" and proceed != "n":
+                        print("Invalid input. Please enter y or n.")
+                        continue
+                if proceed == "n":
+                    order_1 = True
+                else:
+                    order_1 = False
+
+            order_2 = True
+            while order_2:
+                print("Order 2")
+                print("Main Menu")
+                print("1. Chicken - P90.00")
+                print("2. Pork - Php 105.00")
+                print("3. Fish - Php 120.00")
+                print("4. Beef - Php 135.00")
+                main_2 = 0
+                while main_2 < 1 or main_2 > 4:
+                    main_2 = int(input("Please select a main dish (1-4): "))
+                    if main_2 < 1 or main_2 > 4:
+                        print("Invalid input. Please check the Main Menu again.")
+                        continue
+                if main_2 == 1:
+                    main_2_name = "Chicken"
+                    main_2_price = 90
+                elif main_2 == 2:
+                    main_2_name = "Pork"
+                    main_2_price = 105
+                elif main_2 == 3:
+                    main_2_name = "Fish"
+                    main_2_price = 120
+                elif main_2 == 4:
+                    main_2_name = "Beef"
+                    main_2_price = 135
+
+                print("Side Menu:")
+                print("1. Steamed Rice - Php 20.00")
+                print("2. Shredded Corn - Php 35.00")
+                print("3. Mashed Potatoes - Php 50.00")
+                print("4. Steam Vegetables - Php 65.00")
+                side_2 = 0
+                while side_2 < 1 or side_2 > 4:
+                    side_2 = int(input("Please select a side dish (1-4): "))
+                    if side_2 < 1 or side_2 > 4:
+                        print("Invalid input. Please check the Side Menu again.")
+                        continue
+                if side_2 == 1:
+                    side_2_name = "Steamed Rice"
+                    side_2_price = 20
+                elif side_2 == 2:
+                    side_2_name = "Shredded Corn"
+                    side_2_price = 35
+                elif side_2 == 3:
+                    side_2_name = "Mashed Potatoes"
+                    side_2_price = 50
+                elif side_2 == 4:
+                    side_2_name = "Steamed Vegetables"
+                    side_2_price = 65
+
+                print("Drink Menu:")
+                print("1. Mineral Water - Php 25.00")
+                print("2. Iced Tea - Php 35.00")
+                print("3. Soda - Php 45.00")
+                print("4. Fruit Juice - Php 55.00")
+                drink_2 = 0
+                while drink_2 < 1 or drink_2 > 4:
+                    drink_2 = int(input("Please select a drink (1-4): "))
+                    if drink_2 < 1 or drink_2 > 4:
+                        print("Invalid input. Please check the Drink Menu again.")
+                        continue
+                if drink_2 == 1:
+                    drink_2_name = "Mineral Water"
+                    drink_2_price = 25
+                elif drink_2 == 2:
+                    drink_2_name = "Iced Tea"
+                    drink_2_price = 35
+                elif drink_2 == 3:
+                    drink_2_name = "Soda"
+                    drink_2_price = 45
+                elif drink_2 == 4:
+                    drink_2_name = "Fruit Juice"
+                    drink_2_price = 55
+
+                print("Order 2: ")
+                print(f"Main Dish: {main_2_name} - P{main_2_price:.2f}")
+                print(f"Side Dish: {side_2_name} - P{side_2_price:.2f}")
+                print(f"Drink: {drink_2_name} - P{drink_2_price:.2f}")
+
+                is_correct = ""
+                while is_correct != "y" and is_correct != "n":
+                    is_correct = input("Is this meal set order correct? (y/n)\n")
+                    if is_correct != "y" and is_correct != "n":
+                        print("Invalid input. Please enter y or n.")
+                        continue
+                if is_correct == "n":
+                    print("Ordering process restarting...")
+                    order_2 = True
+                else:
+                    order_2 = False
+
+                proceed = ""
+                while proceed != "y" and proceed != "n":
+                    proceed = input("Proceed with the next order? (y/n)\n")
+                    if proceed != "y" and proceed != "n":
+                        print("Invalid input. Please enter y or n.")
+                        continue
+                if proceed == "n":
+                    print("Ordering process restarting...")
+                    order_2 = True
+                else:
+                    order_2 = False
+
+            order_3 = True
+            while order_3:
+                print("Order 3")
+                print("Main Menu")
+                print("1. Chicken - P90.00")
+                print("2. Pork - Php 105.00")
+                print("3. Fish - Php 120.00")
+                print("4. Beef - Php 135.00")
+                main_3 = 0
+                while main_3 < 1 or main_3 > 4:
+                    main_3 = int(input("Please select a main dish (1-4): "))
+                    if main_3 < 1 or main_3 > 4:
+                        print("Invalid input. Please check the Main Menu again.")
+                        continue
+                if main_3 == 1:
+                    main_3_name = "Chicken"
+                    main_3_price = 90
+                elif main_3 == 2:
+                    main_3_name = "Pork"
+                    main_3_price = 105
+                elif main_3 == 3:
+                    main_3_name = "Fish"
+                    main_3_price = 120
+                elif main_3 == 4:
+                    main_3_name = "Beef"
+                    main_3_price = 135
+
+                print("Side Menu:")
+                print("1. Steamed Rice - Php 20.00")
+                print("2. Shredded Corn - Php 35.00")
+                print("3. Mashed Potatoes - Php 50.00")
+                print("4. Steam Vegetables - Php 65.00")
+                side_3 = 0
+                while side_3 < 1 or side_3 > 4:
+                    side_3 = int(input("Please select a side dish (1-4): "))
+                    if side_3 < 1 or side_3 > 4:
+                        print("Invalid input. Please check the Side Menu again.")
+                        continue
+                if side_3 == 1:
+                    side_3_name = "Steamed Rice"
+                    side_3_price = 20
+                elif side_3 == 2:
+                    side_3_name = "Shredded Corn"
+                    side_3_price = 35
+                elif side_3 == 3:
+                    side_3_name = "Mashed Potatoes"
+                    side_3_price = 50
+                elif side_3 == 4:
+                    side_3_name = "Steamed Vegetables"
+                    side_3_price = 65
+
+                print("Drink Menu:")
+                print("1. Mineral Water - Php 25.00")
+                print("2. Iced Tea - Php 35.00")
+                print("3. Soda - Php 45.00")
+                print("4. Fruit Juice - Php 55.00")
+                drink_3 = 0
+                while drink_3 < 1 or drink_3 > 4:
+                    drink_3 = int(input("Please select a drink (1-4): "))
+                    if drink_3 < 1 or drink_3 > 4:
+                        print("Invalid input. Please check the Drink Menu again.")
+                        continue
+                if drink_3 == 1:
+                    drink_3_name = "Mineral Water"
+                    drink_3_price = 25
+                elif drink_3 == 2:
+                    drink_3_name = "Iced Tea"
+                    drink_3_price = 35
+                elif drink_3 == 3:
+                    drink_3_name = "Soda"
+                    drink_3_price = 45
+                elif drink_3 == 4:
+                    drink_3_name = "Fruit Juice"
+                    drink_3_price = 55
+
+                print("Order 3: ")
+                print(f"Main Dish: {main_3_name} - P{main_3_price:.2f}")
+                print(f"Side Dish: {side_3_name} - P{side_3_price:.2f}")
+                print(f"Drink: {drink_3_name} - P{drink_3_price:.2f}")
+
+                is_correct = ""
+                while is_correct != "y" and is_correct != "n":
+                    is_correct = input("Is this meal set order correct? (y/n)\n")
+                    if is_correct != "y" and is_correct != "n":
+                        print("Invalid input. Please enter y or n.")
+                        continue
+                if is_correct == "n":
+                    print("Ordering process restarting...")
+                    order_3 = True
+                else:
+                    order_3 = False
+        # Order Summary
+        if num_people == 1:
+            print("Order for party of 1")
+            print("Order 1: ")
+            print(f"Main: {main_1_name} - P{main_1_price:.2f}")
+            print(f"Side: {side_1_name} - P{side_1_price:.2f}")
+            print(f"Main: {drink_1_name} - P{drink_1_price:.2f}")
+            subtotal_1 = main_1_price + side_1_price + drink_1_price
+            print(f"Subtotal: {subtotal_1:.2f}\n")
+            print(f"Total Amount Due: {subtotal_1:.2f}")
+
+        elif num_people == 2:
+            print("Order for party of 3\n")
+            print("Order 1: ")
+            print(f"Main: {main_1_name} - P{main_1_price:.2f}")
+            print(f"Side: {side_1_name} - P{side_1_price:.2f}")
+            print(f"Main: {drink_1_name} - P{drink_1_price:.2f}")
+            subtotal_1 = main_1_price + side_1_price + drink_1_price
+            print(f"Subtotal: {subtotal_1:.2f}\n")
+            print("Order 2: ")
+            print(f"Main: {main_2_name} - P{main_2_price:.2f}")
+            print(f"Side: {side_2_name} - P{side_2_price:.2f}")
+            print(f"Main: {drink_2_name} - P{drink_2_price:.2f}")
+            subtotal_2 = main_2_price + side_2_price + drink_2_price
+            print(f"Subtotal: {subtotal_2:.2f}\n")
+            total = subtotal_1 + subtotal_2
+            print(f"Total Amount Due: {total:.2f}")
+            print(f"Each person must pay: {total/2:.2f}\n")
+
+        elif num_people == 3:
+            print("Order for party of 3\n")
+            print("Order 1: ")
+            print(f"Main: {main_1_name} - P{main_1_price:.2f}")
+            print(f"Side: {side_1_name} - P{side_1_price:.2f}")
+            print(f"Main: {drink_1_name} - P{drink_1_price:.2f}")
+            subtotal_1 = main_1_price + side_1_price + drink_1_price
+            print(f"Subtotal: {subtotal_1:.2f}\n")
+
+            print("Order 2: ")
+            print(f"Main: {main_2_name} - P{main_2_price:.2f}")
+            print(f"Side: {side_2_name} - P{side_2_price:.2f}")
+            print(f"Main: {drink_2_name} - P{drink_2_price:.2f}")
+            subtotal_2 = main_2_price + side_2_price + drink_2_price
+            print(f"Subtotal: {subtotal_2:.2f}\n")
+
+            print("Order 3: ")
+            print(f"Main: {main_3_name} - P{main_3_price:.2f}")
+            print(f"Side: {side_3_name} - P{side_3_price:.2f}")
+            print(f"Main: {drink_3_name} - P{drink_3_price:.2f}")
+            subtotal_3 = main_3_price + side_3_price + drink_3_price
+            print(f"Subtotal: {subtotal_3:.2f}\n")
+
+            total = subtotal_1 + subtotal_2 + subtotal_3
+            print(f"Total Amount Due: {total:.2f}")
+            print(f"Each person must pay: {total / 3:.2f}\n")
+
+        # Exclude Feature
+        if num_people == 1:
+            exclude = ""
+            while exclude != "y" and exclude != "n":
+                exclude = input("Exclude an item from the total? (y/n)\n")
+                if exclude != "y" and exclude != "n":
+                    print("Invalid input. Please enter y or n.")
+                    continue
+            if exclude == "y":
+                order_num = 1
+                if order_num == 1:
+                    item_exclude = 0
+                    while item_exclude < 1 or item_exclude > 4:
+                        item_exclude = int(input("Which item will be excluded? (1-3)\n"))
+                        if item_exclude < 1 or item_exclude > 4:
+                            print("Invalid input. Please try again.")
+                            continue
+                    if item_exclude == 1:
+                        print(f"{main_1_name} will be excluded from the total.")
+                        main_1_price = 0
+                    elif item_exclude == 2:
+                        print(f"{side_1_name} will be excluded from the total.")
+                        side_1_price = 0
+                    elif item_exclude == 3:
+                        print(f"{drink_1_name} will be excluded from the total.")
+                        drink_1_price = 0
+
+                    # Final Order Summary
+                    print("Order for party of 1")
+                    print("Order 1: ")
+                    print(f"Main: {main_1_name} - P{main_1_price:.2f}")
+                    print(f"Side: {side_1_name} - P{side_1_price:.2f}")
+                    print(f"Main: {drink_1_name} - P{drink_1_price:.2f}")
+                    subtotal_1 = main_1_price + side_1_price + drink_1_price
+                    print(f"Subtotal: {subtotal_1:.2f}\n")
+                    print(f"Total Amount Due: {subtotal_1:.2f}")
+
+        elif num_people == 2:
+            exclude = ""
+            while exclude != "y" and exclude != "n":
+                exclude = input("Exclude an item from the total? (y/n)\n")
+                if exclude != "y" and exclude != "n":
+                    print("Invalid input. Please enter y or n.")
+                    continue
+            if exclude == "y":
+                order_num = 0
+                while order_num <= 0 or order_num >= 3:
+                    order_num = int(input("From which order? (1-2)\n"))
+                    if order_num <= 0 or order_num >= 3:
+                        print("Invalid input. Please try again.")
+                        continue
+                    if order_num == 1:
+                        item_exclude = 0
+                        while item_exclude < 1 or item_exclude > 4:
+                            item_exclude = int(input("Which item will be excluded? (1-3)\n"))
+                            if item_exclude < 1 or item_exclude > 4:
+                                print("Invalid input. Please try again.")
+                                continue
+                        if item_exclude == 1:
+                            print(f"{main_1_name} will be excluded from the total.")
+                            main_1_price = 0
+                        elif item_exclude == 2:
+                            print(f"{side_1_name} will be excluded from the total.")
+                            side_1_price = 0
+                        elif item_exclude == 3:
+                            print(f"{drink_1_name} will be excluded from the total.")
+                            drink_1_price = 0
+                    elif order_num == 2:
+                        item_exclude = 0
+                        while item_exclude < 1 or item_exclude > 4:
+                            item_exclude = int(input("Which item will be excluded? (1-3)\n"))
+                            if item_exclude < 1 or item_exclude > 4:
+                                print("Invalid input. Please try again.")
+                                continue
+                        if item_exclude == 1:
+                            print(f"{main_2_name} will be excluded from the total.")
+                            main_2_price = 0
+                        elif item_exclude == 2:
+                            print(f"{side_2_name} will be excluded from the total.")
+                            side_2_price = 0
+                        elif item_exclude == 3:
+                            print(f"{drink_2_name} will be excluded from the total.")
+                            drink_2_price = 0
+
+                        # Final Order Summary
+                        print("Order for party of 2\n")
+                        print("Order 1: ")
+                        print(f"Main: {main_1_name} - P{main_1_price:.2f}")
+                        print(f"Side: {side_1_name} - P{side_1_price:.2f}")
+                        print(f"Main: {drink_1_name} - P{drink_1_price:.2f}")
+                        subtotal_1 = main_1_price + side_1_price + drink_1_price
+                        print(f"Subtotal: {subtotal_1:.2f}\n")
+                        print("Order 2: ")
+                        print(f"Main: {main_2_name} - P{main_2_price:.2f}")
+                        print(f"Side: {side_2_name} - P{side_2_price:.2f}")
+                        print(f"Main: {drink_2_name} - P{drink_2_price:.2f}")
+                        subtotal_2 = main_2_price + side_2_price + drink_2_price
+                        print(f"Subtotal: {subtotal_2:.2f}\n")
+                        total = subtotal_1 + subtotal_2
+                        print(f"Total Amount Due: {total:.2f}")
+                        print(f"Each person must pay: {total / 2:.2f}\n")
+        elif num_people == 3:
+            exclude = ""
+            while exclude != "y" and exclude != "n":
+                exclude = input("Exclude an item from the total? (y/n)\n")
+                if exclude != "y" and exclude != "n":
+                    print("Invalid input. Please enter y or n.")
+                    continue
+            if exclude == "y":
+                order_num = 0
+                while order_num <= 0 or order_num >= 3:
+                    order_num = int(input("From which order? (1-2)\n"))
+                    if order_num <= 0 or order_num >= 3:
+                        print("Invalid input. Please try again.")
+                        continue
+                    if order_num == 1:
+                        item_exclude = 0
+                        while item_exclude < 1 or item_exclude > 4:
+                            item_exclude = int(input("Which item will be excluded? (1-3)\n"))
+                            if item_exclude < 1 or item_exclude > 4:
+                                print("Invalid input. Please try again.")
+                                continue
+                        if item_exclude == 1:
+                            print(f"{main_1_name} will be excluded from the total.")
+                        elif item_exclude == 2:
+                            print(f"{side_1_name} will be excluded from the total.")
+                        elif item_exclude == 3:
+                            print(f"{drink_1_name} will be excluded from the total.")
+                    elif order_num == 2:
+                        item_exclude = 0
+                        while item_exclude < 1 or item_exclude > 4:
+                            item_exclude = int(input("Which item will be excluded? (1-3)\n"))
+                            if item_exclude < 1 or item_exclude > 4:
+                                print("Invalid input. Please try again.")
+                                continue
+                        if item_exclude == 1:
+                            print(f"{main_2_name} will be excluded from the total.")
+                            main_2_price = 0
+                        elif item_exclude == 2:
+                            print(f"{side_2_name} will be excluded from the total.")
+                            side_2_price = 0
+                        elif item_exclude == 3:
+                            print(f"{drink_2_name} will be excluded from the total.")
+                            drink_2_price = 0
+                    elif order_num == 3:
+                        item_exclude = 0
+                        while item_exclude < 1 or item_exclude > 4:
+                            item_exclude = int(input("Which item will be excluded? (1-3)\n"))
+                            if item_exclude < 1 or item_exclude > 4:
+                                print("Invalid input. Please try again.")
+                                continue
+                        if item_exclude == 1:
+                            print(f"{main_3_name} will be excluded from the total.")
+                            main_3_price = 0
+                        elif item_exclude == 2:
+                            print(f"{side_3_name} will be excluded from the total.")
+                            side_3_price = 0
+                        elif item_exclude == 3:
+                            print(f"{drink_3_name} will be excluded from the total.")
+                            drink_3_price = 0
+
+                        # Final Order Summary
+                        print("Order for party of 3\n")
+                        print("Order 1: ")
+                        print(f"Main: {main_1_name} - P{main_1_price:.2f}")
+                        print(f"Side: {side_1_name} - P{side_1_price:.2f}")
+                        print(f"Main: {drink_1_name} - P{drink_1_price:.2f}")
+                        subtotal_1 = main_1_price + side_1_price + drink_1_price
+                        print(f"Subtotal: {subtotal_1:.2f}\n")
+
+                        print("Order 2: ")
+                        print(f"Main: {main_2_name} - P{main_2_price:.2f}")
+                        print(f"Side: {side_2_name} - P{side_2_price:.2f}")
+                        print(f"Main: {drink_2_name} - P{drink_2_price:.2f}")
+                        subtotal_2 = main_2_price + side_2_price + drink_2_price
+                        print(f"Subtotal: {subtotal_2:.2f}\n")
+
+                        print("Order 3: ")
+                        print(f"Main: {main_3_name} - P{main_3_price:.2f}")
+                        print(f"Side: {side_3_name} - P{side_3_price:.2f}")
+                        print(f"Main: {drink_3_name} - P{drink_3_price:.2f}")
+                        subtotal_3 = main_3_price + side_3_price + drink_3_price
+                        print(f"Subtotal: {subtotal_3:.2f}\n")
+
+                        total = subtotal_1 + subtotal_2 + subtotal_3
+                        print(f"Total Amount Due: {total:.2f}")
+                        print(f"Each person must pay: {total / 3:.2f}\n")
+else:
+    print("Goodbye!")
